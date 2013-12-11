@@ -13,6 +13,7 @@ package stateMachine
 		public var toState : String;
 		public var currentState : String;
 		public var allowedStates : Object;
+		public var data:Object;
 
 		public function StateMachineEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false)
 		{

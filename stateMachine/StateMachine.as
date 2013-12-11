@@ -174,7 +174,7 @@ package stateMachine
 		 * Changing states will call the exit callback for the exiting state and enter callback for the entering state
 		 * @param stateTo	The name of the state to transition to
 		**/
-		public function changeState(stateTo:String):void
+		public function changeState(stateTo:String, data:Object = null):void
 		{
 			// If there is no state that maches stateTo
 			if (!(stateTo in _states)){
@@ -223,6 +223,7 @@ package stateMachine
 				var _enterCallbackEvent:StateMachineEvent = new StateMachineEvent(StateMachineEvent.ENTER_CALLBACK);
 				_enterCallbackEvent.toState = stateTo;
 				_enterCallbackEvent.fromState = oldState;
+				_enterCallbackEvent.data = data;
 				
 				if(_states[stateTo].root)
 				{

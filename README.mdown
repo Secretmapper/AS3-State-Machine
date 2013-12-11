@@ -9,6 +9,10 @@ State Machines are composed of states, and each state has (optional) callbacks f
 
 Learn more about state machines and its applications on http://ai-depot.com/FiniteStateMachines/FSM.html
 
+About the Fork
+--------------
+
+This fork adds a data field to the State Machine Event, so we can send data through our function callbacks. (onEnterPhase);
 
 Usage
 -----
@@ -40,6 +44,18 @@ It's also possible to create hierarchical state machines using the argument "par
 		 monsterSM.addState("die",{enter:onDead, from:"attack", enter:onDie})
 		 
 		 monsterSM.initialState = "idle"
+
+To add data when changing state, fill the second parameter with the data.
+
+		 monsterSM.changeState("idle",{target:1})
+
+
+Then on our state, call
+
+		 function onIdle(smEvent:StateMachineEvent):void
+		 {
+		 	var target:int = smEvent.data.target; //1
+		 }
 		 
 License
 -------
